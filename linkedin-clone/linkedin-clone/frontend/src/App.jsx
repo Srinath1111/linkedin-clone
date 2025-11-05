@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Navbar from './Navbar.jsx';
-import Login from './Login.jsx';
-import Signup from './Signup.jsx';
-import Feed from './Feed.jsx';
-import { setAuthToken } from './api.js';
-
+import Navbar from './Navbar';
+import Login from './Login';
+import Signup from './Signup';
+import Feed from './Feed';
+import { setAuthToken } from './api';
 
 function App() {
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
+  const [user, setUser] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('user')) || null;
+    } catch {
+      return null;
+    }
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,12 +23,12 @@ function App() {
     }
   }, [user]);
 
-  function handleLogout() {
+  const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
     setAuthToken(null);
     navigate('/');
-  }
+  };
 
   return (
     <div>
@@ -39,5 +45,6 @@ function App() {
 }
 
 export default App;
+
 
 
