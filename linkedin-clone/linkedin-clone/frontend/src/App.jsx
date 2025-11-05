@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Navbar from './components/Navbar.jsx';
-import Login from './components/Login.jsx';
-import Signup from './components/Signup.jsx';
-import Feed from './components/Feed.jsx';
+import Navbar from './Navbar.jsx';
+import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+import Feed from './Feed.jsx';
 import { setAuthToken } from './api.js';
+
 
 function App() {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
