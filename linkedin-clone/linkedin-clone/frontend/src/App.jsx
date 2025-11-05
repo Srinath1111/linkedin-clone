@@ -11,7 +11,9 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user?.token) setAuthToken(user.token);
+    if (user?.token) {
+      setAuthToken(user.token);
+    }
   }, [user]);
 
   function handleLogout() {
@@ -36,4 +38,5 @@ function App() {
 }
 
 export default App;
+
 
